@@ -1,0 +1,35 @@
+{
+  "name": "pixi-js-scaffold",
+  "version": "1.0.0",
+  "description": "Boilerplate for PixiJS apps",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onewittygrassblade/pixi-js-scaffold.git"
+  },
+  "keywords": [
+    "PixiJS"
+  ],
+  "author": "OneWittyGrassBlade",
+  "license": "MIT",
+  "dependencies": {
+    "pixi.js": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.2.2"
+  }
+}
