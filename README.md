@@ -45,6 +45,8 @@ Also in the `src` folder:
 * A helper, `centerCanvas`, useful to keep the view centered in the window.
 * Constants, including aliases for PixiJS's classes (very likely to need additions in real projects).
 
+The source code is transpiled with Babel and bundled with Webpack. For local development, Webpack Dev Server is used.
+
 All the necessary elements for distribution live in the `dist` folder. The app's view is appended to the minimal `dist/index.html`. Assets such as images, sounds and fonts should also live in this folder.
 
 # Common elements not (currently) in this scaffold
