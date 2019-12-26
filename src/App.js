@@ -13,7 +13,6 @@ import {
 
 export default class App extends Application {
   static loadAssets() {
-    console.log('hi');
     return new Promise((resolve, reject) => {
       loader
       //   .add('images/assets.json')
