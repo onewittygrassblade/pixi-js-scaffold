@@ -1,2 +1,1 @@
-public/images/** linguist-detectable=false
-.babelrc linguist-detectable=false
+*.tps -linguist-detectable
