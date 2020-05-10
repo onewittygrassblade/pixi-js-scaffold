@@ -12,21 +12,12 @@ import {
 } from './const/app';
 
 export default class App extends Application {
-  static loadAssets() {
-    return new Promise((resolve, reject) => {
-      loader
-      //   .add('images/assets.json')
-      //   .on('error', reject)
-        .load(resolve);
-    });
-  }
-
   constructor() {
     super({ width: RENDERER_WIDTH, height: RENDERER_HEIGHT, backgroundColor: 0xababab });
   }
 
-  setup() {
-    // view
+  boot() {
+    // Set view
     document.getElementById('root').appendChild(this.view);
 
     centerCanvas(this.view);
@@ -34,7 +25,16 @@ export default class App extends Application {
       centerCanvas(this.view);
     });
 
-    // event management
+    // Load assets
+    loader
+      // .add('images/assets.json')
+      .on('progress', () => {})
+      .on('error', () => {})
+      .load(this.handleLoadComplete.bind(this));
+  }
+
+  handleLoadComplete() {
+    // Create event collectors
     this.events = [];
     // this.view.addEventListener(
     //   'mousedown', // keydown, keyup
@@ -42,17 +42,16 @@ export default class App extends Application {
     //   false
     // );
 
-    // scene
-    // const { textures } = resources['images/assets.json'];
-    // this.stage.addChild(...); // or instantiate world or push first state to state stack;
-  }
-
-  run() {
+    // Set game loop
     // PIXI.Ticker uses a ratio that is 1 if FPS = 60, 2 if FPS = 2, etc.
     this.ticker.add((fpsRatio) => {
       this.processInput();
       // something.update((fpsRatio * 1000) / 60); // time per frame = 1000 / 60 ms // something could be the state stack or the world
     });
+
+    // scene
+    // const { textures } = resources['images/assets.json'];
+    // this.stage.addChild(...); // or instantiate world or push first state to state stack;
   }
 
   processInput() {
