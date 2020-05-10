@@ -36,10 +36,10 @@ npm run lint
 
 # Structure
 
-All the javascript source code lives in the `src` directory. The entrypoint is `src/index.js`, which basically loads the assets and instantiates and runs the app. The app itself (`src/App.js`) inherits from `PIXI.Application` and has three main parts:
-* A static function, `loadAssets`, which uses PixiJS's loader to load the assets and returns a promise.
-* The `setup` function, which sets up core elements like the view and event listeners. This is also where the initial state of the app will be rendered by appending children to the stage, e.g. by instantiating a world or pushing the first state of a state stack.
-* The `run` function, which uses PixiJS's ticker and does basically two things: process input (events) and update the game (e.g. a world or a state stack).
+All the javascript source code lives in the `src` directory. The entrypoint is `src/index.js`, which creates an instance of the app and starts it. The app itself (`src/App.js`) inherits from `PIXI.Application` and contains the following functions:
+* The `boot` function is meant to be called initially on a new App instance. It basically sets the view and loads the assets. In a more developed project, it could render a loading bar. When asset loading is complete, the `handleLoadComplete` function is called.
+* The `handleLoadComplete` function handles the app setup after asset loading is complete. In particular, it sets up event handling, sets the callback function for the app's ticker and renders the initial state of the app.
+* The `processInput` function is the callback for the app's ticker (i.e. it essentially defined the game loop). It does basically two things: process input (events) and update the game.
 
 Also in the `src` folder:
 * A helper, `centerCanvas`, useful to keep the view centered in the window.
@@ -51,9 +51,9 @@ All the necessary elements for distribution live in the `dist` folder. The app's
 
 # Common elements not (currently) in this scaffold
 
-The goal for now is to keep this template simple. The elements below are commonly used in games.
+The goal for now is to keep this template very simple. The elements below are commonly used in games.
 
 * State stack and common states (title, game, game over, pause).
 * GUI manager.
-* Music manager.
+* Sound effects/music manager.
 * Pub-sub system.
