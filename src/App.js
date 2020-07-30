@@ -28,9 +28,12 @@ export default class App extends Application {
     // Load assets
     loader
       // .add('images/assets.json')
-      .on('progress', () => {})
-      .on('error', () => {})
       .load(this.handleLoadComplete.bind(this));
+
+    loader.onProgress.add(() => {}); // called once per loaded/errored file
+    loader.onError.add(() => {}); // called once per errored file
+    loader.onLoad.add(() => {}); // called once per loaded file
+    loader.onComplete.add(() => {}); // called once when the queued resources all load.
   }
 
   handleLoadComplete() {
