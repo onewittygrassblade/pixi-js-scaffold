@@ -10,7 +10,7 @@ git clone https://github.com/onewittygrassblade/pixi-js-scaffold.git
 ```
 or
 ```
-git clone git@github.com:onewittygrassblade/isogame.git
+git clone git@github.com:onewittygrassblade/pixi-js-scaffold.git
 ```
 
 Install the Node packages (use either `npm` or `yarn` in the following commands):
