@@ -1,8 +1,4 @@
-import {
-  loader,
-  resources,
-  Application,
-} from './const/aliases';
+import { Application, Assets } from 'pixi.js';
 
 import centerCanvas from './helpers/centerCanvas';
 
@@ -16,7 +12,7 @@ export default class App extends Application {
     super({ width: RENDERER_WIDTH, height: RENDERER_HEIGHT, backgroundColor: 0xababab });
   }
 
-  boot() {
+  async init() {
     // Set view
     document.getElementById('root').appendChild(this.view);
 
@@ -26,17 +22,12 @@ export default class App extends Application {
     });
 
     // Load assets
-    loader
-      // .add('images/assets.json')
-      .load(this.handleLoadComplete.bind(this));
+    // const sheet = await Assets.load(ASSETS_URL);
 
-    loader.onProgress.add(() => {}); // called once per loaded/errored file
-    loader.onError.add(() => {}); // called once per errored file
-    loader.onLoad.add(() => {}); // called once per loaded file
-    loader.onComplete.add(() => {}); // called once when the queued resources all load.
-  }
+    // Create scene
+    // const { textures } = sheet;
+    // this.stage.addChild(...); // or instantiate world or push first state to state stack;
 
-  handleLoadComplete() {
     // Create event collectors
     this.events = [];
     // this.view.addEventListener(
@@ -53,10 +44,6 @@ export default class App extends Application {
       // time per frame = 1000 / 60 ms
       // something could be the state stack or the world
     });
-
-    // scene
-    // const { textures } = resources['images/assets.json'];
-    // this.stage.addChild(...); // or instantiate world or push first state to state stack;
   }
 
   processInput() {
